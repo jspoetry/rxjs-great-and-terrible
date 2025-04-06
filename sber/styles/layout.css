@@ -22,6 +22,7 @@
   --sb-yellow: #FAED00;
   --sb-green: #34E234;
   --sb-dark-green: #12C512;
+  --slidev-code-font-size: 14px;
 }
 
 .slidev-layout.cover,
@@ -131,5 +132,17 @@ div.slidev-layout.two-cols-header, div.slidev-layout.two-cols   {
 .slidev-layout.section {
   h1 {
     @apply text-8xl;
+  }
+}
+
+.slidev-layout {
+  tr {
+    border-bottom-style: dotted;
+    border-bottom-color: rgba(255, 255, 255, 0.5);
+  }
+
+  th, td {
+    font-weight: 300;
+    @apply py-8 text-xl;
   }
 }

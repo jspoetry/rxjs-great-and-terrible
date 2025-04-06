@@ -259,7 +259,7 @@ const subscription = click$.subscribe((clickElement) => {
   console.log(clickElement)
 })
 ```
-```ts{*|3,7|4-6|3-11}{lines: true}
+```ts{*|3,7|4-6|4|5|6|9-11}{lines: true}
 import { fromEvent, debounceTime, map, filter } from 'rxjs'
 
 const clicks$ = fromEvent('click', document).pipe(
@@ -323,22 +323,21 @@ layout: two-cols-header
 ::left::
 
 ## Порождающие операторы {v-click="12"}
-  <v-clicks>
+  <v-click>
 
   - Creation Operators
   - Join Creation Operators
-  </v-clicks>
+  </v-click>
 
-  ```ts
+  <!-- ```ts
   const clicks$ = fromEvent('click', document);
   const refreshInterval$ = interval(5000);
-
-  ```
+  ``` -->
 
 ::right::
 
 ## Потоковые операторы {v-click="13"}
-  <v-clicks>
+  <v-click>
 
   - Transformation Operators
   - Filtering Operators
@@ -348,7 +347,7 @@ layout: two-cols-header
   - Utility Operators
   - Conditional and Boolean Operators
   - Mathematical and Aggregate Operators
-  </v-clicks>
+  </v-click>
 
 <!-- TODO: примеры с кодом -->
 
