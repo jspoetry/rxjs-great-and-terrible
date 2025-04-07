@@ -150,7 +150,7 @@ import { fromEvent } from 'rxjs'
 
 const clicks$ = fromEvent('click', document)
 
-const subscription = click$.subscribe((clickElement) => {
+const subscription = clicks$.subscribe((clickElement) => {
   console.log(clickElement)
 })
 ```
@@ -322,7 +322,7 @@ layout: two-cols-header
 
 ::left::
 
-## Порождающие операторы {v-click="12"}
+## Порождающие операторы {v-click="3"}
   <v-click>
 
   - Creation Operators
@@ -336,7 +336,7 @@ layout: two-cols-header
 
 ::right::
 
-## Потоковые операторы {v-click="13"}
+## Потоковые операторы {v-click="4"}
   <v-click>
 
   - Transformation Operators
@@ -351,6 +351,8 @@ layout: two-cols-header
 
 <!-- TODO: примеры с кодом -->
 
+---
+clicks: 5
 ---
 
 # Разные операторы, но примерно то&nbsp;же самое

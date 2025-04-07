@@ -44,10 +44,20 @@ class: absolute-vclick
 
 ::right::
 
-<SlidevVideo v-click="1" autoplay muted loop>
-  <source src="../assets/demo-jazz.mp4" />
-</SlidevVideo>
+<div class="overflow-hidden flex justify-center items-center h-full">
+  <SlidevVideo v-click="[1, 2]" autoplay muted loop>
+    <source src="../assets/media-capture.mp4" />
+  </SlidevVideo><SlidevVideo v-click="[2, 3]" autoplay muted loop>
+    <source src="../assets/demo-jazz.mp4" />
+  </SlidevVideo>
+  <SlidevVideo class="-mt-1 h-full" v-click="[3, 4]" autoplay muted loop>
+    <source src="../assets/websocket.mp4" />
+  </SlidevVideo>
+  <SlidevVideo v-click="[4, 5]" autoplay muted loop>
+    <source src="../assets/webrtc.mp4" />
+  </SlidevVideo>
 
+</div>
 <!--
 TODO: Иллюстрации для каждого пункта
 -->
@@ -66,7 +76,7 @@ TODO: Иллюстрации для каждого пункта
 
 </v-clicks>
 
-<ImageFrame v-click v-drag="[242,35,536,516]">
+<ImageFrame v-click v-drag="[217,62,536,516]">
   <img src="../assets/rxjs-great-and-powerful.png">
 </ImageFrame>
 

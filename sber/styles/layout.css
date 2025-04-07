@@ -115,6 +115,10 @@ div.slidev-layout.two-cols-header, div.slidev-layout.two-cols   {
   }
 }
 
+  .col-left, .col-right {
+    @apply overflow-hidden;
+  }
+
 .talk-title {
   background-image: linear-gradient(50deg,
     #34E234 0%,
