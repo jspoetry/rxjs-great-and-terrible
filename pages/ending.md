@@ -43,8 +43,6 @@ class: absolute-vclick
   <img src="../assets/rx-logo.png" />
 </ImageFrame>
 
-<!-- hey  -->
-
 ---
 layout: center
 ---

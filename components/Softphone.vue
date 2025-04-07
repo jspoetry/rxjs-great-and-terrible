@@ -348,7 +348,7 @@ export default {
         switchMap(() => interval(1000).pipe(
           takeUntil(callEnded$),
           filter(() => callState.value !== 'paused'),
-          scan((accumulator, _value) => accumulator + 1, 0),
+          scan((acc, _value) => acc + 1, 1),
           endWith(0)
         )),
         startWith(0),
@@ -408,7 +408,7 @@ export default {
         switchMap(() => interval(1000).pipe(
           takeUntil(callEnded$),
           filter(() => callState.value !== 'paused'),
-          scan((accumulator, _value) => accumulator + 1, 1),
+          scan((acc, _value) => acc + 1, 1),
           endWith(0)
         )),
         startWith(0),
