@@ -66,6 +66,8 @@ TODO: Иллюстрации для каждого пункта
 
 # Почему не RxJS
 
+<div class="number-blocks">
+
 <v-clicks>
 
 1. Только для Angular-приложений
@@ -75,6 +77,7 @@ TODO: Иллюстрации для каждого пункта
 5. Супер старый
 
 </v-clicks>
+</div>
 
 <ImageFrame v-click v-drag="[217,62,536,516]">
   <img src="../assets/rxjs-great-and-powerful.png">

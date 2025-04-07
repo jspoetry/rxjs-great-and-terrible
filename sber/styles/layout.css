@@ -150,3 +150,23 @@ div.slidev-layout.two-cols-header, div.slidev-layout.two-cols   {
     @apply py-8 text-xl;
   }
 }
+
+  .number-blocks {
+    @apply h-full;
+  }
+  .number-blocks ol {
+    @apply grid grid-cols-3 h-full gap-x-10 items-center;
+  }
+  .number-blocks li {
+    list-style: none;
+    position: relative;
+    @apply text-2xl;
+  }
+  .number-blocks li::before {
+    display: list-item;
+    content: counter(list-item);
+    color: var(--sb-yellow);
+    width: min-content;
+    padding-left: 1px;
+    @apply text-5xl mb-3;
+  }
