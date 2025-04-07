@@ -21,7 +21,7 @@ title: Обо мне
 
   <div class="images">
     <ImageFrame class="max-h-120">
-      <img src="../assets/about-me-photo.JPG">
+      <img src="../assets/about-me-photo.jpg">
     </ImageFrame>
   </div>
 </div>
