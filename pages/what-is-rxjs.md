@@ -146,7 +146,7 @@ import { fromEvent } from 'rxjs'
 
 const clicks$ = fromEvent('click', document)
 ```
-```ts {*|5-7|9}{lines: true}
+```ts {*|5-7}{lines: true}
 import { fromEvent } from 'rxjs'
 
 const clicks$ = fromEvent('click', document)
