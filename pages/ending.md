@@ -47,7 +47,13 @@ class: absolute-vclick
 </ImageFrame>
 
 ---
-layout: center
----
 
-# Спасибо!
+<div class="grid justify-center items-center h-full w-full pt-30">
+
+# Спасибо! 
+
+<div class="qr mt-auto flex justify-center"> 
+  <img width="100" height="100" src="../assets/presentation.svg">
+</div>
+
+</div>
