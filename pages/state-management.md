@@ -162,6 +162,8 @@ layout: center
 # Сигналы хорошо работают с состоянием, <br> а RxJS -- с событиями
 
 ---
+title: интегрируетес
+---
 
 <ImageFrame>
   <img src="../assets/интегрируетес.jfif">
@@ -215,8 +217,13 @@ class: absolute-vclick
 - `useLayoutObservableState`
 - `useObservableGetState`
 - `useObservablePickState`
-- `useRenderThrow`
 
 </div>
 
 <!-- TODO: Добавить логотипы  -->
+
+---
+
+# RxJS & Svelte
+
+<<< @/snippets/svelteRx.ts {*|9}{lines: true}

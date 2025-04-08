@@ -65,12 +65,12 @@ import { fromEvent } from 'rxjs';
 
 const documentClicks$ = fromEvent(document, 'click')
 
-const subscription = documentClicks$.subscribe(() => {
+const sub = documentClicks$.subscribe(() => {
   console.log('Clicked!')
 });
 
 // To unsubscribe:
-subscription.unsubscribe();
+sub.unsubscribe();
 ```
 
 ---

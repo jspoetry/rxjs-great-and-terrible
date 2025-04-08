@@ -61,6 +61,7 @@ title: Постер с Потоком
 ---
 title: Иллюстрация потока
 layout: center
+clicksStart: 2
 ---
 
 <div v-click.hide="5" class="click-stream text-4xl justify-self-center mb-8">*click*</div>
@@ -323,21 +324,30 @@ layout: two-cols-header
 ::left::
 
 ## Порождающие операторы {v-click="3"}
-  <v-click>
+
+  <div class="absolute-vclick">
+  <div v-click="[1, 3]">
 
   - Creation Operators
   - Join Creation Operators
-  </v-click>
+  </div>
 
-  <!-- ```ts
+  <div v-click="3">
+
+  ```ts {*}{lines: true}
   const clicks$ = fromEvent('click', document);
-  const refreshInterval$ = interval(5000);
-  ``` -->
+  const interval$ = interval(5000);
+  const request$ = ajax.getJson('/endpoint');
+  const total$ = forkJoin([request1$, request2$])
+  ```
+  </div>
+  </div>
 
 ::right::
 
 ## Потоковые операторы {v-click="4"}
-  <v-click>
+  <div class="absolute-vclick">
+  <div v-click="[2, 4]">
 
   - Transformation Operators
   - Filtering Operators
@@ -347,7 +357,28 @@ layout: two-cols-header
   - Utility Operators
   - Conditional and Boolean Operators
   - Mathematical and Aggregate Operators
-  </v-click>
+  </div>
+
+  <div v-click="4">
+
+  ```ts {*}{lines: true}
+  clicks$.pipe(
+    debounceTime(200)
+  );
+  interval$.pipe(
+    take(8)
+  )
+  request$.pipe(
+    retry(3)
+  );
+  total$.pipe(
+    tap((responses) => console.log(responses))
+  )
+  ```
+
+  </div>
+  </div>
+
 
 <!-- TODO: примеры с кодом -->
 

@@ -88,6 +88,8 @@ export default {
     videoRef.value?.pause()
   }
 
+  onUnmounted(stopVideo)
+
   const callState = ref('call-awaiting');
   const callDuration = ref(0)
 
@@ -240,6 +242,7 @@ export default {
       // #region step-7
       // import { startWith, endWith } from 'rxjs'
 
+      const callState = ref('call-awaiting')
       const callState$ = from(callState)
       const callStarted$ = callState$.pipe(
         filter((state) => state === 'in-call'),
@@ -348,7 +351,7 @@ export default {
         switchMap(() => interval(1000).pipe(
           takeUntil(callEnded$),
           filter(() => callState.value !== 'paused'),
-          scan((acc, _value) => acc + 1, 1),
+          scan((acc, _value) => acc + 1, 0),
           endWith(0)
         )),
         startWith(0),
@@ -408,7 +411,7 @@ export default {
         switchMap(() => interval(1000).pipe(
           takeUntil(callEnded$),
           filter(() => callState.value !== 'paused'),
-          scan((acc, _value) => acc + 1, 1),
+          scan((acc, _value) => acc + 1, 0),
           endWith(0)
         )),
         startWith(0),

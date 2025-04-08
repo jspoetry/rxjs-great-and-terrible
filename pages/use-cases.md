@@ -25,7 +25,7 @@ class: absolute-vclick
 title: Демо с софтфоном
 ---
 
-<div class="grid grid-cols-2"> 
+<div class="grid grid-cols-[350px_minmax(0,_1fr)] gap-x-20px"> 
   <v-switch unmount>
     <template #0>
       <Softphone :step="1" />
@@ -66,28 +66,34 @@ title: Демо с софтфоном
 
 ````md magic-move {at: 2, lines: true}
 <<< @/components/Softphone.vue#step-1 ts {*}
-<<< @/components/Softphone.vue#step-2 ts {*}
-<<< @/components/Softphone.vue#step-3 ts {*}
-<<< @/components/Softphone.vue#step-4 ts {*}
-<<< @/components/Softphone.vue#step-5 ts {*}
-<<< @/components/Softphone.vue#step-6 ts {*}
-<<< @/components/Softphone.vue#step-7 ts {*}
-<<< @/components/Softphone.vue#step-8 ts {*}
-<<< @/components/Softphone.vue#step-9 ts {*}
-<<< @/components/Softphone.vue#step-10 ts {*|*}
+<<< @/components/Softphone.vue#step-2 ts {1,2,5-6}
+<<< @/components/Softphone.vue#step-3 ts {1,5}
+<<< @/components/Softphone.vue#step-4 ts {1,2,5-8}
+<<< @/components/Softphone.vue#step-5 ts {1,8-11}
+<<< @/components/Softphone.vue#step-6 ts {1,7-9,11-13}
+<<< @/components/Softphone.vue#step-7 ts {1,14,16}
+<<< @/components/Softphone.vue#step-8 ts {12}
+<<< @/components/Softphone.vue#step-9 ts {5-11}
+<<< @/components/Softphone.vue#step-10 ts {19|*}
 <<< @/snippets/callDurationReact.ts#useObservable {*|4,22|9,20|*}
 ````
 
 </v-click>
 </div>
 
+
+<style>
+  .container {
+  }
+
+</style>
 <!-- 
- TODO: Добавить хайлайты
  TODO: Добавить диаграммы
  -->
 
 ---
 layout: two-cols-header
+class: absolute-vclick
 ---
 
 # HTTP-клиенты
@@ -97,19 +103,86 @@ layout: two-cols-header
 <v-clicks>
 
 - Отменяемые запросы
-- Повторные попытки
 - Таймауты
-- Удобный маппинг в объекты с типом `pending` | `success` | `failure`
+- Повторные запросы
+- Маппинг в объекты с типом <br> `pending` | `success` | `failure`
 
 </v-clicks>
 
 ::right::
 
-<!-- TODO: расписать код -->
+````md magic-move {at: 1}
+```ts
+function createRequest(url: string) {
+  return ajax.getJSON(url);
+}
+```
+```ts
+function createRequest(url$: Observable<string>) {
+  return url$.pipe(
+    switchMap(url => ajax.getJSON(url))
+  );
+}
+```
+```ts
+function createRequest(url$: Observable<string>) {
+  return url$.pipe(
+    switchMap(url => ajax.getJSON(url).pipe(
+      timeout(5000),
+    ))
+  );
+}
+```
+```ts
+function createRequest(url$: Observable<string>) {
+  return url$.pipe(
+    switchMap(url => ajax.getJSON(url).pipe(
+      timeout(5000),
+      retry(3)
+    ))
+  );
+}
+```
+```ts
+function createRequest(url$: Observable<string>) {
+  return url$.pipe(
+    switchMap(url => ajax.getJSON(url).pipe(
+      timeout(5000),
+      retry(3),
+      map(data => ({ type: 'success', data }))
+      catchError((error) => of({
+        type: 'failure',
+        error
+      }))
+      startWith({ type: 'pending' }),
+    ))
+  );
+}
+```
+````
+
+<style>
+  .slidev-layout {
+    @apply gap-x-0!; 
+  }
+</style>
 
 ---
 
-# WebSocket
+# WebSocket 
+
+```ts
+import { webSocket } from 'rxjs/webSocket'
+
+function createWebSocket(url$: Observable<string>) {
+  return url$.pipe(
+    switchMap(url => webSocket(url).pipe(
+      timeout(5000),
+      retry(3),
+    ))
+  );
+}
+```
 
 <!--
 TODO: Расписать преимущества вебсокета
