@@ -171,6 +171,7 @@ function createRequest(url$: Observable<string>) {
 
 # WebSocket 
 
+````md magic-move
 ```ts
 import { webSocket } from 'rxjs/webSocket'
 
@@ -183,6 +184,43 @@ function createWebSocket(url$: Observable<string>) {
   );
 }
 ```
+```ts
+import { webSocket, Subject } from 'rxjs/webSocket'
+
+function createWebSocket(url$: Observable<string>) {
+  return url$.pipe(
+    switchMap(url => webSocket(url).pipe(
+      timeout(5000),
+      retry(3),
+    ))
+  );
+}
+
+const url$ = new Subject<string>();
+const webSocket$ = createWebSocket(url$);
+
+url$.next('wss://holyjs.ru/events')
+
+webSocket$.subscribe((event) => {
+  console.log(event)
+})
+```
+```ts
+import { webSocket, Subject, debounceTime } from 'rxjs/webSocket'
+
+const url$ = new Subject<string>();
+const webSocket$ = createWebSocket(url$);
+
+url$.next('wss://holyjs.ru/events')
+
+webSocket$.pipe(
+  debounceTime(100),
+  map((event) => event.payload)
+).subscribe((payload) => {
+  console.log(payload)
+})
+```
+````
 
 <!--
 TODO: Расписать преимущества вебсокета
