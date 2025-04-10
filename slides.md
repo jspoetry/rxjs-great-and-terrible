@@ -8,10 +8,10 @@ title: |
   RxJS: Великий и Ужасный. Описываем сложную асинхронную логику вне зависимости от стека
 info: |
   Как органично интегрировать RxJS в существующие проекты, выделить сложную асинхронную логику из компонентов и сделать код более читаемым и поддерживаемым.
-
-  [Карточка доклада на HolyJS](https://holyjs.ru/talks/7415b7af723d48e3901c9fc93d4517b9/)
+  Карточка доклада на HolyJS - https://holyjs.ru/talks/7415b7af723d48e3901c9fc93d4517b9/
 # apply unocss classes to the current slide
 class: text-center
+presenter: false
 # https://sli.dev/features/drawing
 drawings:
   persist: false
